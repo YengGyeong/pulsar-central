@@ -55,10 +55,10 @@ public class TeamController {
     	teamService.updateTeam(team);
     }
     
-    @DeleteMapping()
-    void deleteTeam(@RequestBody Team team) {
+    @DeleteMapping("/{id}")
+    void deleteTeam(@PathVariable int id) {
     	
-    	teamService.deleteTeam(team);
+    	teamService.deleteTeam(id);
     }
       
 }

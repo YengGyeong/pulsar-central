@@ -20,8 +20,8 @@ public interface UserService {
     
     public long generateId();
 
-	public void updateUser(User user);
+	public User updateUser(User user);
 
-	public void deleteUser(User user);
+	public void deleteUser(int id);
     
 }

@@ -56,10 +56,10 @@ public class UserController {
     	userService.updateUser(user);
     }
     
-    @DeleteMapping()
-    void deleteUser(@RequestBody User user) {
+    @DeleteMapping("/{id}")
+    void deleteUser(@PathVariable int id) {
     	
-    	userService.deleteUser(user);
+    	userService.deleteUser(id);
     }
    	
 	

@@ -34,11 +34,13 @@ public class TeamServiceImpl implements TeamService {
 
     public void addTeam(Team team) {
     	
-    	if(team.getId() == 0) {
+    	if(team.getId() == -1) {
     		//team.setId(generateId());
     	}
     	
-    	teamRepository.save(team);
+    	if(teamRepository.getOne(team.getId()) == null) {
+    		teamRepository.save(team);
+    	} 
     }
     
     public long generateId() {
@@ -51,9 +53,9 @@ public class TeamServiceImpl implements TeamService {
 		teamRepository.save(team);
 	}
 
-	public void deleteTeam(Team team) {
+	public void deleteTeam(int id) {
 
-		teamRepository.delete(team);
+		teamRepository.deleteById((long)id);
 	}
     
     

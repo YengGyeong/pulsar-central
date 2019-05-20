@@ -34,11 +34,13 @@ public class UserServiceImpl implements UserService {
 
     public void addUser(User user) {
     	
-    	if(user.getId() == 0) {
+    	if(user.getId() == -1) {
     		//user.setId(generateId());
     	}
     	
-    	userRepository.save(user);
+    	if(userRepository.getOne(user.getId()) == null) {
+    		userRepository.save(user);
+    	}
     }
     
     public long generateId() {
@@ -46,14 +48,14 @@ public class UserServiceImpl implements UserService {
     	return 0;
     }
 
-	public void updateUser(User user) {
+	public User updateUser(User user) {
 
-		userRepository.save(user);
+		return userRepository.save(user);
 	}
 
-	public void deleteUser(User user) {
+	public void deleteUser(int id) {
 
-		userRepository.delete(user);
+		userRepository.deleteById((long)id);;
 	}
     
 }

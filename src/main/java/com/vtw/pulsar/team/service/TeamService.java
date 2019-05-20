@@ -19,6 +19,6 @@ public interface TeamService {
 
 	public void updateTeam(Team team);
 
-	public void deleteTeam(Team team);
+	public void deleteTeam(int id);
     
 }
