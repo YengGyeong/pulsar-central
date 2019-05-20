@@ -1,0 +1,15 @@
+camel:
+  springboot:
+    main-run-controller: true
+    stream-caching-enabled: true
+spring:
+  datasource:
+    driver-class-name: com.tmax.tibero.jdbc.TbDriver
+    url: jdbc:tibero:thin:@10.47.39.125:8629:DB_D_GMD
+    username: PULSAR
+    password: vtw
+  h2:
+    console:
+      enabled: true 
+      settings:
+        web-allow-others: true
