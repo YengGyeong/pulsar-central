@@ -23,5 +23,7 @@ public interface UserService {
 	public User updateUser(User user);
 
 	public void deleteUser(int id);
+
+	public List<User> getUsersByConditions();
     
 }

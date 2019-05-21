@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.vtw.pulsar.jpa.PageInfo;
 import com.vtw.pulsar.user.entity.User;
 import com.vtw.pulsar.user.repository.UserRepository;
+import com.vtw.pulsar.user.repository.UserSpecification;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -54,6 +55,12 @@ public class UserServiceImpl implements UserService {
 	public void deleteUser(int id) {
 
 		userRepository.deleteById((long)id);;
+	}
+
+	@Override
+	public List<User> getUsersByConditions() {
+
+		return userRepository.findAll(UserSpecification.searchUser(10));
 	}
     
 }

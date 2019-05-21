@@ -32,6 +32,13 @@ public class UserController {
         return userService.getUsers(pageInfo);
     }
     
+    @GetMapping("/conditions")
+    public List<User> getUsersByConditions(User user) {
+    	System.out.println(user);
+    	System.out.println(userService.getUsersByConditions());
+    	return userService.getUsersByConditions();
+    }
+    
     @GetMapping("/count")
     public int getCount() {
     	
