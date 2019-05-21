@@ -46,7 +46,7 @@ public class UserController {
 
     @PostMapping()
     void addUser(@RequestBody User user) {
-    	
+    	System.out.println(user);
     	userService.addUser(user);
     }
     

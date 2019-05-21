@@ -38,9 +38,7 @@ public class UserServiceImpl implements UserService {
     		//user.setId(generateId());
     	}
     	
-    	if(userRepository.getOne(user.getId()) == null) {
-    		userRepository.save(user);
-    	}
+    	userRepository.save(user);
     }
     
     public long generateId() {
