@@ -18,11 +18,10 @@ import com.vtw.pulsar.team.entity.Team;
 @Entity
 @Table(name="USER_TEST")
 public class User {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     @SequenceGenerator(sequenceName = "SEQ_USER", allocationSize = 1, name = "user_seq")
-    private long id;
+    private long id = 0;
     private String name;
     private String email;
     
@@ -30,7 +29,7 @@ public class User {
     private LocalDate join;
     
     @ManyToOne
-    @JoinColumn(name="team")
+    @JoinColumn(name="TEAM", referencedColumnName="ID")
     private Team team;
     
 	public User() {
@@ -76,10 +75,18 @@ public class User {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", join=" + join + ", team=" + team + "]";
 	}
+
+//	public long getTeam() {
+//		return team;
+//	}
+//
+//	public void setTeam(long team) {
+//		this.team = team;
+//	}
 
 }
