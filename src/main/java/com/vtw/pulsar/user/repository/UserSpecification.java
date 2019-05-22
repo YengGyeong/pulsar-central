@@ -42,37 +42,4 @@ public class UserSpecification {
 			}
 		};
 	}
-	
-//	public static Specification<User> team(User user) {
-//		return new Specification<User>() {
-//			@Override
-//			public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-//				
-//				Join<Team, User> u = root.join("id", JoinType.INNER);
-//				return criteriaBuilder.equal(u.get, arg1)
-//				
-//			}
-//		};
-//	}
-//	
-	
-	
-//	public static Specification<User> searchUser(Map<String, Object> filter) {
-//		return (root, query, criteriaBuilder) -> {
-//			
-//			List<Predicate> predicates = new ArrayList();
-//			
-//			filter.forEach((key, value) -> {
-//				String likeValue = "%" + value + "%";
-//				
-//				switch(key) {
-//				case "userId":
-//					predicates.add(criteriaBuilder.like(root.get(key).as(String.class), likeValue));
-//					break;
-//				}
-//			});
-//			
-//			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
-//		}
-//	}
 }

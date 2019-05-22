@@ -29,15 +29,8 @@ public class UserController {
 	
 	   
     @GetMapping()
-    public List<User> getUsers(PageInfo pageInfo) {
+    public List<User> getUsers(UserSearch user, PageInfo pageInfo) {
 
-        return userService.getUsers(pageInfo);
-    }
-    
-    @GetMapping("/conditions")
-    public List<User> getUsersByConditions(UserSearch user, PageInfo pageInfo) {
-    	System.out.println(user);
-    	System.out.println(userService.getUsersByConditions(user, pageInfo));
     	return userService.getUsersByConditions(user, pageInfo);
     }
     
@@ -46,7 +39,7 @@ public class UserController {
 
     	return userService.getCount(search);
     }
-    
+      
     @GetMapping("/{id}")
     public User getUser(@PathVariable int id) {
     	
