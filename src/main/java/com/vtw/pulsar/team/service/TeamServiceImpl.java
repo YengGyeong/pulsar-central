@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.vtw.pulsar.jpa.PageInfo;
 import com.vtw.pulsar.team.entity.Team;
+import com.vtw.pulsar.team.entity.TeamSearch;
 import com.vtw.pulsar.team.repository.TeamRepository;
+import com.vtw.pulsar.team.repository.TeamSpecification;
 
 @Service
 public class TeamServiceImpl implements TeamService {
@@ -17,14 +19,14 @@ public class TeamServiceImpl implements TeamService {
     	this.teamRepository = teamRepository;
     }
     
-    public List<Team> getTeams(PageInfo pageInfo) {
+    public List<Team> getTeams(TeamSearch team, PageInfo pageInfo) {
     	
-        return (List<Team>) teamRepository.findAll(pageInfo.toPageable("id")).getContent();
+        return (List<Team>) teamRepository.findAll(TeamSpecification.searchTeam(team), pageInfo.toPageable("id")).getContent();
     }
     
-	public int getCount() {
+	public int getCount(TeamSearch team) {
 		
-		return (int) teamRepository.count();
+		return (int) teamRepository.count(TeamSpecification.searchTeam(team));
 	}
     
 	public Team getTeam(long id) {
@@ -38,9 +40,8 @@ public class TeamServiceImpl implements TeamService {
     		//team.setId(generateId());
     	}
     	
-    	if(teamRepository.getOne(team.getId()) == null) {
-    		teamRepository.save(team);
-    	} 
+		teamRepository.save(team);
+    	 
     }
     
     public long generateId() {

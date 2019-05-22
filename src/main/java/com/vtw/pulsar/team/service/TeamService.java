@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.vtw.pulsar.jpa.PageInfo;
 import com.vtw.pulsar.team.entity.Team;
+import com.vtw.pulsar.team.entity.TeamSearch;
 
 public interface TeamService {
 	   
-    public List<Team> getTeams(PageInfo pageInfo);
+    public List<Team> getTeams(TeamSearch team, PageInfo pageInfo);
     
-	public int getCount();
+	public int getCount(TeamSearch team);
     
 	public Team getTeam(long id);
 

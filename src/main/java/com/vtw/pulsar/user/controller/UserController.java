@@ -31,7 +31,7 @@ public class UserController {
     @GetMapping()
     public List<User> getUsers(UserSearch user, PageInfo pageInfo) {
 
-    	return userService.getUsersByConditions(user, pageInfo);
+    	return userService.getUsers(user, pageInfo);
     }
     
     @GetMapping("/count")
@@ -48,7 +48,7 @@ public class UserController {
 
     @PostMapping()
     void addUser(@RequestBody User user) {
-    	System.out.println(user);
+
     	userService.addUser(user);
     }
     

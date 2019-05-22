@@ -20,10 +20,12 @@ public class UserServiceImpl implements UserService {
     	this.userRepository = userRepository;
     }
     
-    public List<User> getUsers(PageInfo pageInfo) {
-    	
-        return (List<User>) userRepository.findAll(pageInfo.toPageable("id")).getContent();
-    }
+    @Override
+	public List<User> getUsers(UserSearch user, PageInfo pageInfo) {
+	
+		return (List<User>) userRepository.findAll(UserSpecification.searchUser(user), pageInfo.toPageable("id")).getContent();
+	}
+    
     
 	public int getCount(UserSearch user) {
 		
@@ -59,10 +61,5 @@ public class UserServiceImpl implements UserService {
 		userRepository.deleteById((long)id);
 	}
 
-	@Override
-	public List<User> getUsersByConditions(UserSearch user, PageInfo pageInfo) {
 	
-		return (List<User>) userRepository.findAll(UserSpecification.searchUser(user), pageInfo.toPageable("id")).getContent();
-	}
-    
 }

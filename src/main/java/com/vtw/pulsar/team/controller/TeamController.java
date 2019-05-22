@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vtw.pulsar.jpa.PageInfo;
 import com.vtw.pulsar.team.entity.Team;
+import com.vtw.pulsar.team.entity.TeamSearch;
+import com.vtw.pulsar.team.service.TeamService;
 import com.vtw.pulsar.team.service.TeamServiceImpl;
 
 @RestController
@@ -23,18 +25,18 @@ import com.vtw.pulsar.team.service.TeamServiceImpl;
 public class TeamController {
 
 	@Autowired
-	TeamServiceImpl teamService;	
+	TeamService teamService;	
     
     @GetMapping()
-    public List<Team> getTeams(PageInfo pageInfo) {
+    public List<Team> getTeams(TeamSearch team, PageInfo pageInfo) {
 
-        return teamService.getTeams(pageInfo);
+        return teamService.getTeams(team, pageInfo);
     }
     
     @GetMapping("/count")
-    public int getCount() {
+    public int getCount(TeamSearch team) {
     	
-    	return teamService.getCount();
+    	return teamService.getCount(team);
     }
     
     @GetMapping("/{id}")

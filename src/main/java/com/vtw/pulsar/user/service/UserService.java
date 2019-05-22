@@ -11,7 +11,7 @@ import com.vtw.pulsar.user.entity.UserSearch;
 @Service
 public interface UserService {
 	   
-    public List<User> getUsers(PageInfo pageInfo);
+	public List<User> getUsers(UserSearch user, PageInfo pageInfo);
     
 	public int getCount(UserSearch user);
     
@@ -24,7 +24,5 @@ public interface UserService {
 	public User updateUser(User user);
 
 	public void deleteUser(int id);
-
-	public List<User> getUsersByConditions(UserSearch user, PageInfo pageInfo);
     
 }
