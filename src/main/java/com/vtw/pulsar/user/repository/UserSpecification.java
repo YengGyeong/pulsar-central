@@ -27,7 +27,7 @@ public class UserSpecification {
 				Join<User, Team> u = root.join("team");
 				
 				Predicate teamJoin = null;
-				if(search.getTeamId() == -1) {
+				if(search.getTeamId() == 0) {
 					teamJoin = criteriaBuilder.notEqual(u.get("id"), search.getTeamId());
 				} else {
 					teamJoin = criteriaBuilder.equal(u.get("id"), search.getTeamId());

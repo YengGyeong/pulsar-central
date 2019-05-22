@@ -10,7 +10,7 @@ public class UserSearch {
 	private String startDate = "1970-01-01";
 	private String endDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-	private long teamId = -1;
+	private long teamId = 0;
 	
 	public long getId() {
 		return id;
