@@ -2,10 +2,12 @@ package com.vtw.pulsar.user.service;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.vtw.pulsar.jpa.PageInfo;
 import com.vtw.pulsar.user.entity.User;
+import com.vtw.pulsar.user.entity.UserSearch;
 import com.vtw.pulsar.user.repository.UserRepository;
 import com.vtw.pulsar.user.repository.UserSpecification;
 
@@ -23,9 +25,9 @@ public class UserServiceImpl implements UserService {
         return (List<User>) userRepository.findAll(pageInfo.toPageable("id")).getContent();
     }
     
-	public int getCount() {
+	public int getCount(UserSearch user) {
 		
-		return (int) userRepository.count();
+		return (int) userRepository.count(UserSpecification.searchUser(user));
 	}
     
 	public User getUser(long id) {
@@ -58,9 +60,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUsersByConditions() {
-
-		return userRepository.findAll(UserSpecification.searchUser(10));
+	public List<User> getUsersByConditions(UserSearch user, PageInfo pageInfo) {
+	
+		return (List<User>) userRepository.findAll(UserSpecification.searchUser(user), pageInfo.toPageable("id")).getContent();
 	}
     
 }

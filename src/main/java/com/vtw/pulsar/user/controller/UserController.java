@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vtw.pulsar.jpa.PageInfo;
+import com.vtw.pulsar.team.entity.Team;
 import com.vtw.pulsar.user.entity.User;
+import com.vtw.pulsar.user.entity.UserSearch;
 import com.vtw.pulsar.user.service.UserService;
 
 @RestController
@@ -33,16 +35,16 @@ public class UserController {
     }
     
     @GetMapping("/conditions")
-    public List<User> getUsersByConditions(User user) {
+    public List<User> getUsersByConditions(UserSearch user, PageInfo pageInfo) {
     	System.out.println(user);
-    	System.out.println(userService.getUsersByConditions());
-    	return userService.getUsersByConditions();
+    	System.out.println(userService.getUsersByConditions(user, pageInfo));
+    	return userService.getUsersByConditions(user, pageInfo);
     }
     
     @GetMapping("/count")
-    public int getCount() {
-    	
-    	return userService.getCount();
+    public int getCount(UserSearch search) {
+
+    	return userService.getCount(search);
     }
     
     @GetMapping("/{id}")

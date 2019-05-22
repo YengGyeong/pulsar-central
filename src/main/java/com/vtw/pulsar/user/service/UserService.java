@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 
 import com.vtw.pulsar.jpa.PageInfo;
 import com.vtw.pulsar.user.entity.User;
+import com.vtw.pulsar.user.entity.UserSearch;
 
 @Service
 public interface UserService {
 	   
     public List<User> getUsers(PageInfo pageInfo);
     
-	public int getCount();
+	public int getCount(UserSearch user);
     
 	public User getUser(long id);
 
@@ -24,6 +25,6 @@ public interface UserService {
 
 	public void deleteUser(int id);
 
-	public List<User> getUsersByConditions();
+	public List<User> getUsersByConditions(UserSearch user, PageInfo pageInfo);
     
 }
